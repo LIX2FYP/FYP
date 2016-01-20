@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		952DB7DD1C45FBF2002A63F5 /* BlockShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952DB7DC1C45FBF2002A63F5 /* BlockShape.swift */; };
+		9532CBAB1C44D88B008464F4 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532CBAA1C44D88B008464F4 /* Sprite.swift */; };
+		9532CBAD1C44D897008464F4 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532CBAC1C44D897008464F4 /* Block.swift */; };
+		9532CBAF1C44D9FC008464F4 /* MyProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532CBAE1C44D9FC008464F4 /* MyProjectVC.swift */; };
 		95E5A1801C4494C500CFBEF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5A17F1C4494C500CFBEF0 /* AppDelegate.swift */; };
-		95E5A1821C4494C500CFBEF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5A1811C4494C500CFBEF0 /* ViewController.swift */; };
+		95E5A1821C4494C500CFBEF0 /* ScratchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5A1811C4494C500CFBEF0 /* ScratchVC.swift */; };
 		95E5A1851C4494C500CFBEF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E5A1831C4494C500CFBEF0 /* Main.storyboard */; };
 		95E5A1871C4494C500CFBEF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95E5A1861C4494C500CFBEF0 /* Assets.xcassets */; };
 		95E5A18A1C4494C500CFBEF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E5A1881C4494C500CFBEF0 /* LaunchScreen.storyboard */; };
 		95E5A1951C4494C600CFBEF0 /* CodeBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5A1941C4494C600CFBEF0 /* CodeBookTests.swift */; };
 		95E5A1A01C4494C600CFBEF0 /* CodeBookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5A19F1C4494C600CFBEF0 /* CodeBookUITests.swift */; };
+		95E5A1AE1C44AF4E00CFBEF0 /* image in Resources */ = {isa = PBXBuildFile; fileRef = 95E5A1AD1C44AF4E00CFBEF0 /* image */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		952DB7DC1C45FBF2002A63F5 /* BlockShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockShape.swift; sourceTree = "<group>"; };
+		9532CBAA1C44D88B008464F4 /* Sprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
+		9532CBAC1C44D897008464F4 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		9532CBAE1C44D9FC008464F4 /* MyProjectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProjectVC.swift; sourceTree = "<group>"; };
 		95E5A17C1C4494C500CFBEF0 /* CodeBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E5A17F1C4494C500CFBEF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		95E5A1811C4494C500CFBEF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		95E5A1811C4494C500CFBEF0 /* ScratchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScratchVC.swift; sourceTree = "<group>"; };
 		95E5A1841C4494C500CFBEF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95E5A1861C4494C500CFBEF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95E5A1891C4494C500CFBEF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +56,7 @@
 		95E5A19B1C4494C600CFBEF0 /* CodeBookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeBookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E5A19F1C4494C600CFBEF0 /* CodeBookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBookUITests.swift; sourceTree = "<group>"; };
 		95E5A1A11C4494C600CFBEF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95E5A1AD1C44AF4E00CFBEF0 /* image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = image; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +108,16 @@
 			isa = PBXGroup;
 			children = (
 				95E5A17F1C4494C500CFBEF0 /* AppDelegate.swift */,
-				95E5A1811C4494C500CFBEF0 /* ViewController.swift */,
+				95E5A1811C4494C500CFBEF0 /* ScratchVC.swift */,
 				95E5A1831C4494C500CFBEF0 /* Main.storyboard */,
+				9532CBAE1C44D9FC008464F4 /* MyProjectVC.swift */,
+				9532CBAA1C44D88B008464F4 /* Sprite.swift */,
+				9532CBAC1C44D897008464F4 /* Block.swift */,
+				952DB7DC1C45FBF2002A63F5 /* BlockShape.swift */,
 				95E5A1861C4494C500CFBEF0 /* Assets.xcassets */,
 				95E5A1881C4494C500CFBEF0 /* LaunchScreen.storyboard */,
 				95E5A18B1C4494C500CFBEF0 /* Info.plist */,
+				95E5A1AD1C44AF4E00CFBEF0 /* image */,
 			);
 			path = CodeBook;
 			sourceTree = "<group>";
@@ -193,6 +208,7 @@
 				TargetAttributes = {
 					95E5A17B1C4494C500CFBEF0 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = F5Y6RG94WY;
 					};
 					95E5A18F1C4494C600CFBEF0 = {
 						CreatedOnToolsVersion = 7.2;
@@ -229,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E5A1AE1C44AF4E00CFBEF0 /* image in Resources */,
 				95E5A18A1C4494C500CFBEF0 /* LaunchScreen.storyboard in Resources */,
 				95E5A1871C4494C500CFBEF0 /* Assets.xcassets in Resources */,
 				95E5A1851C4494C500CFBEF0 /* Main.storyboard in Resources */,
@@ -256,7 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95E5A1821C4494C500CFBEF0 /* ViewController.swift in Sources */,
+				95E5A1821C4494C500CFBEF0 /* ScratchVC.swift in Sources */,
+				952DB7DD1C45FBF2002A63F5 /* BlockShape.swift in Sources */,
+				9532CBAD1C44D897008464F4 /* Block.swift in Sources */,
+				9532CBAB1C44D88B008464F4 /* Sprite.swift in Sources */,
+				9532CBAF1C44D9FC008464F4 /* MyProjectVC.swift in Sources */,
 				95E5A1801C4494C500CFBEF0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +420,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CodeBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LIX2.CodeBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -410,10 +434,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CodeBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LIX2.CodeBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -484,6 +511,7 @@
 				95E5A1A61C4494C600CFBEF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95E5A1A71C4494C600CFBEF0 /* Build configuration list for PBXNativeTarget "CodeBookTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +520,7 @@
 				95E5A1A91C4494C600CFBEF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95E5A1AA1C4494C600CFBEF0 /* Build configuration list for PBXNativeTarget "CodeBookUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +529,7 @@
 				95E5A1AC1C4494C600CFBEF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
