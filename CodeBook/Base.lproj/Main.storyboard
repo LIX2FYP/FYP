@@ -229,54 +229,58 @@
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xVV-Hc-mPK">
                                                 <rect key="frame" x="218" y="0.0" width="449" height="110"/>
                                             </scrollView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3KS-Rg-JM8">
-                                                <rect key="frame" x="8" y="8" width="51" height="30"/>
-                                                <state key="normal" title="Motion"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3KS-Rg-JM8">
+                                                <rect key="frame" x="-1" y="10" width="70" height="26"/>
+                                                <state key="normal" image="block_Motion"/>
                                                 <connections>
                                                     <action selector="showMotionBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2UK-iM-ewX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1b-1e-adR">
-                                                <rect key="frame" x="80" y="8" width="46" height="30"/>
-                                                <state key="normal" title="Events"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1b-1e-adR">
+                                                <rect key="frame" x="72" y="10" width="63" height="26"/>
+                                                <state key="normal" image="block_Events"/>
                                                 <connections>
                                                     <action selector="showEventsBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hUI-2u-PMk"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88R-rY-X96">
-                                                <rect key="frame" x="150" y="8" width="46" height="30"/>
-                                                <state key="normal" title="Looks"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88R-rY-X96">
+                                                <rect key="frame" x="142" y="10" width="63" height="26"/>
+                                                <state key="normal" image="block_Looks"/>
                                                 <connections>
                                                     <action selector="showLooksBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zI9-hs-1XZ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFj-ll-gmy">
-                                                <rect key="frame" x="8" y="46" width="51" height="30"/>
-                                                <state key="normal" title="Control"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFj-ll-gmy">
+                                                <rect key="frame" x="-2" y="48" width="71" height="26"/>
+                                                <state key="normal" image="block_Control"/>
                                                 <connections>
                                                     <action selector="showControlBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="slc-55-bvB"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOx-2L-dtI">
-                                                <rect key="frame" x="80" y="46" width="46" height="30"/>
-                                                <state key="normal" title="Sound"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOx-2L-dtI">
+                                                <rect key="frame" x="72" y="48" width="63" height="26"/>
+                                                <state key="normal" image="block_Sound"/>
                                                 <connections>
                                                     <action selector="showSoundBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CLZ-yI-K7v"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NxL-TF-gCj">
-                                                <rect key="frame" x="143" y="46" width="60" height="30"/>
-                                                <state key="normal" title="Sensing"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NxL-TF-gCj">
+                                                <rect key="frame" x="136" y="48" width="74" height="26"/>
+                                                <state key="normal" image="block_Sensing"/>
                                                 <connections>
                                                     <action selector="showSensingBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yke-f2-acL"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOG-fY-YCk">
-                                                <rect key="frame" x="66" y="80" width="75" height="30"/>
-                                                <state key="normal" title="Operators"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOG-fY-YCk">
+                                                <rect key="frame" x="5" y="82" width="99" height="26"/>
+                                                <state key="normal" image="block_Operator"/>
                                                 <connections>
                                                     <action selector="showOperatorsBlock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qz7-yU-a5d"/>
                                                 </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="on0-Kv-eZO">
+                                                <rect key="frame" x="105" y="82" width="114" height="26"/>
+                                                <state key="normal" image="block_More"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -313,7 +317,7 @@
                                         <state key="normal" image="button_guide"/>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="grid" translatesAutoresizingMaskIntoConstraints="NO" id="dq8-yM-fqJ">
-                                        <rect key="frame" x="21" y="-2" width="731" height="451"/>
+                                        <rect key="frame" x="21" y="-3" width="731" height="451"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.74117647060000003" green="0.19215686269999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
@@ -470,6 +474,14 @@
         <image name="background_selection" width="900" height="650"/>
         <image name="bird_icon" width="222" height="260"/>
         <image name="bird_icon2" width="122" height="160"/>
+        <image name="block_Control" width="71" height="26"/>
+        <image name="block_Events" width="63" height="26"/>
+        <image name="block_Looks" width="63" height="26"/>
+        <image name="block_More" width="114" height="26"/>
+        <image name="block_Motion" width="70" height="26"/>
+        <image name="block_Operator" width="99" height="26"/>
+        <image name="block_Sensing" width="74" height="26"/>
+        <image name="block_Sound" width="63" height="26"/>
         <image name="box_delete" width="798" height="223"/>
         <image name="box_insert" width="135" height="111"/>
         <image name="button_MyProject" width="364" height="424"/>

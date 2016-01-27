@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BlockShape: UIView{
+class BlockShape: UIView, UITextFieldDelegate{
     //graphic
     var g = UIBezierPath()
     //width
@@ -40,6 +40,21 @@ class BlockShape: UIView{
     var substack2H: CGFloat?
     var redrawNeeded: Bool = true
     
+    //label
+    var label: UILabel?
+    var label2: UILabel?
+    var label3: UILabel?
+    
+    //textField
+    var textField: UITextField?
+    var textField2: UITextField?
+    var textField3: UITextField?
+    
+    //value
+    var textFieldValue: String?
+    var textFieldValue2: String?
+    var textFieldValue3: String?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clearColor()
@@ -57,10 +72,6 @@ class BlockShape: UIView{
         NotchR2 = NotchR1! + NotchDepth
         substack1H = EmptySubstackH
         substack2H = EmptySubstackH
-        
-        //var label = UILabel(frame: CGRectMake(10, 15, 60, 20))
-        //label.textColor = UIColor.whiteColor()
-        //label.textAlignment = NSTextAlignment.Left
         
         //UIColor.orangeColor().setFill()
         if type == "motion"{
@@ -108,10 +119,217 @@ class BlockShape: UIView{
             
             case "bool": drawBoolShape()
             case "number": drawNumShape()
+            
+            if type == "motion"{
+                if id == 12{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "x position")
+                    self.addSubview(label!)
+                }
+                else if id == 13{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "y position")
+                    self.addSubview(label!)
+                }
+                else if id == 14{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "direction")
+                    self.addSubview(label!)
+                }
+            }
             case "cmd": drawCmdShape()
+            
+            if type == "motion"{
+                if id == 0{
+                    
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "move")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(50, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                    
+                    label2 = createLabel(85, y: 10, width: 60, height: 15, text: "step")
+                    self.addSubview(label2!)
+                }
+                else if id == 1{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "turn right")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(50, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                    
+                    label2 = createLabel(85, y: 10, width: 60, height: 15, text: "degrees")
+                    self.addSubview(label2!)
+                }
+                else if id == 2{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "turn left")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(50, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                    
+                    label2 = createLabel(85, y: 10, width: 60, height: 15, text: "degrees")
+                    self.addSubview(label2!)
+                }
+                else if id == 3{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "point in direction")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(80, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                }
+                else if id == 4{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "go to x:")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(50, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                    
+                    label2 = createLabel(85, y: 10, width: 60, height: 15, text: "y:")
+                    self.addSubview(label2!)
+                    
+                    textField2 = createTextField(90, y: 8, width: 30, height: 20, text: textFieldValue2!)
+                    self.addSubview(textField2!)
+                }
+                else if id == 5{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "glide")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                    
+                    label2 = createLabel(35, y: 10, width: 60, height: 15, text: "secs to x:")
+                    self.addSubview(label2!)
+                    
+                    textField2 = createTextField(50, y: 8, width: 30, height: 20, text: textFieldValue2!)
+                    self.addSubview(textField2!)
+                    
+                    label3 = createLabel(65, y: 10, width: 60, height: 15, text: "y:")
+                    self.addSubview(label3!)
+                    
+                    textField3 = createTextField(80, y: 8, width: 30, height: 20, text: textFieldValue3!)
+                    self.addSubview(textField3!)
+                }
+                else if id == 6{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "change x by")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                }
+                else if id == 7{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "set x to")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                }
+                else if id == 8{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "change y by")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                }
+                else if id == 9{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "set y to")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                }
+                else if id == 10{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "if on edge, bounce")
+                    self.addSubview(label!)
+                }
+                else if id == 11{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "set rotation style")
+                    self.addSubview(label!)
+                }
+            }
+            else if type == "looks"{
+                if id == 0{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "say")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                    
+                    label2 = createLabel(35, y: 10, width: 60, height: 15, text: "for")
+                    self.addSubview(label2!)
+                    
+                    textField2 = createTextField(50, y: 8, width: 30, height: 20, text: textFieldValue2!)
+                    self.addSubview(textField2!)
+                    
+                    label3 = createLabel(80, y: 10, width: 60, height: 15, text: "secs")
+                    self.addSubview(label3!)
+                }
+                else if id == 1{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "say")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                }
+                else if id == 2{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "think")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                    
+                    label2 = createLabel(35, y: 10, width: 60, height: 15, text: "for")
+                    self.addSubview(label2!)
+                    
+                    textField2 = createTextField(50, y: 8, width: 30, height: 20, text: textFieldValue2!)
+                    self.addSubview(textField2!)
+                    
+                    label3 = createLabel(80, y: 10, width: 60, height: 15, text: "secs")
+                    self.addSubview(label3!)
+                }
+                else if id == 3{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "think")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                }
+                else if id == 4{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "show")
+                    self.addSubview(label!)
+                }
+                else if id == 5{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "hide")
+                    self.addSubview(label!)
+                }
+                else if id == 6{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "switch costume to")
+                    self.addSubview(label!)
+                }
+                else if id == 7{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "next costume")
+                    self.addSubview(label!)
+                }
+                else if id == 8{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "change size by")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                }
+                else if id == 9{
+                    label = createLabel(5, y: 10, width: 60, height: 15, text: "set size to")
+                    self.addSubview(label!)
+                    
+                    textField = createTextField(20, y: 8, width: 30, height: 20, text: textFieldValue!)
+                    self.addSubview(textField!)
+                    
+                    label2 = createLabel(35, y: 10, width: 60, height: 15, text: "%")
+                    self.addSubview(label2!)
+                }
+            }
             case "ifelse": drawIfElseShape()
             case "loop": drawLoopShape()
             case "cmdoutline": drawCmdOutlineShape()
+            case "finalCmdShape": drawCmdShape()
+            case "loopShape": drawLoopShape()
             default: break
         }
         
@@ -154,14 +372,14 @@ class BlockShape: UIView{
     
     func drawCmdShape(){
         drawTop()
-        drawRightAndBottom(topH!, hasNotch: (shape != "FinalCmdShape"))
+        drawRightAndBottom(topH!, hasNotch: (shape != "finalCmdShape"))
     }
     
     func drawCmdOutlineShape(){
         g.lineWidth = 2
         UIColor(red: 0, green: 1, blue: 1, alpha: 0.2).setStroke()
         drawTop()
-        drawRightAndBottom(topH!, hasNotch: (shape != "FinalCmdShape"))
+        drawRightAndBottom(topH!, hasNotch: (shape != "finalCmdShape"))
         g.addLineToPoint(CGPoint(x: 0, y: CornerInset))
     }
     
@@ -181,7 +399,7 @@ class BlockShape: UIView{
         drawTop()
         drawRightAndBottom(topH!, hasNotch: true, inset: SubstackInset)
         drawArm(h1)
-        drawRightAndBottom(h1 + BottomBarH, hasNotch: (shape == "LoopShape"))
+        drawRightAndBottom(h1 + BottomBarH, hasNotch: (shape == "loopShape"))
     }
     
     func drawArm(armTop: CGFloat){
@@ -228,6 +446,40 @@ class BlockShape: UIView{
             g.addLineToPoint(CGPoint(x: inset + CornerInset, y: bottomY))
             g.addLineToPoint(CGPoint(x: 0, y: bottomY - CornerInset))
         }
+    }
+    
+    func createLabel (x: CGFloat, y:CGFloat, width:CGFloat, height:CGFloat, text:String) -> UILabel{
+        var newLabel = UILabel(frame: CGRectMake(x, y, width, height))
+        newLabel.textColor = UIColor.whiteColor()
+        newLabel.textAlignment = NSTextAlignment.Left
+        newLabel.text = text
+        return newLabel
+    }
+    
+    func createTextField (x: CGFloat, y:CGFloat, width:CGFloat, height:CGFloat, text:String) -> UITextField{
+        var newTextField = UITextField(frame: CGRect(x: x, y: y, width: width, height: height))
+        newTextField.backgroundColor = UIColor.whiteColor()
+        newTextField.layer.cornerRadius = 10
+        newTextField.textAlignment = NSTextAlignment.Center
+        newTextField.keyboardType = UIKeyboardType.NumbersAndPunctuation
+        newTextField.delegate = self
+        newTextField.addTarget(self, action: "textFieldDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        newTextField.text = text
+        return newTextField
+    }
+    
+    func textFieldDidChange(changedTextField: UITextField){
+        if changedTextField.isEqual(textField){
+            textFieldValue = changedTextField.text
+        }
+        else if changedTextField.isEqual(textField2){
+            textFieldValue2 = changedTextField.text
+        }
+        else if changedTextField.isEqual(textField3){
+            textFieldValue3 = changedTextField.text
+        }
+        
+
     }
     
 }

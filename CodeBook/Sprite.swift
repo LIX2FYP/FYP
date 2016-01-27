@@ -21,7 +21,12 @@ class Sprite {
     var spriteImageView: UIImageView!
     
     //say
+    var talkingView: UIView!
     var talkingImageView: UIImageView!
+    var talkingLabel: UILabel!
+    
+    var costume: Array<UIImage> = []
+    var currentCostume: Int
     
     
     //Icon
@@ -34,7 +39,7 @@ class Sprite {
     var blocks: Array<Array<Block>>
     
     
-    init(spriteType: String, x: CGFloat, y: CGFloat, rotation: CGFloat, rotationStyle: Int, height: CGFloat, width: CGFloat, blocks: Array<Array<Block>>){
+    init(spriteType: String, x: CGFloat, y: CGFloat, rotation: CGFloat, rotationStyle: Int, height: CGFloat, width: CGFloat, blocks: Array<Array<Block>>, costume: Int){
         self.spriteType = spriteType
         self.x = x
         self.y = y
@@ -43,15 +48,63 @@ class Sprite {
         self.height = height
         self.width = width
         self.blocks = blocks
+        self.currentCostume = costume
+        
+        if spriteType == "redbird"{
+            //self.costume.append(UIImage(named: "redbird")!)
+            self.costume.append(UIImage(named: "bat_1")!)
+            self.costume.append(UIImage(named: "bat_2")!)
+        }
+        else if spriteType == "turtle"{
+            self.costume.append(UIImage(named: "turtle")!)
+        }
+        else if spriteType == "rabbit"{
+            self.costume.append(UIImage(named: "rabbit")!)
+        }
+        else if spriteType == "crow_standing"{
+            self.costume.append(UIImage(named: "crow_standing")!)
+        }
+        else if spriteType == "pig_mum"{
+            self.costume.append(UIImage(named: "pig_mum")!)
+        }
+        else if spriteType == "pig_first"{
+            self.costume.append(UIImage(named: "pig_first")!)
+        }
+        else if spriteType == "pig_second"{
+            self.costume.append(UIImage(named: "pig_second")!)
+        }
+        else if spriteType == "pig_third"{
+            self.costume.append(UIImage(named: "pig_third")!)
+        }
+        else if spriteType == "wolf"{
+            self.costume.append(UIImage(named: "wolf")!)
+        }
+        else if spriteType == "boy"{
+            self.costume.append(UIImage(named: "boy")!)
+        }
+        else if spriteType == "sheep"{
+            self.costume.append(UIImage(named: "sheep")!)
+        }
+        else if spriteType == "prince"{
+            self.costume.append(UIImage(named: "prince")!)
+        }
+        else if spriteType == "princess"{
+            self.costume.append(UIImage(named: "princess")!)
+        }
+        else if spriteType == "devil"{
+            self.costume.append(UIImage(named: "devil")!)
+        }
+        else if spriteType == "devil_blue"{
+            self.costume.append(UIImage(named: "devil_blue")!)
+        }
         
         self.spriteImageView = createSprite()
         self.spriteIconImageView = createSpriteIcon()
-        self.talkingImageView = createTalking()
-        
+        self.talkingView = createTalking()
     }
     
     func createSprite() -> UIImageView {
-        let spriteImage: UIImage = UIImage(named: spriteType)!
+        let spriteImage: UIImage = costume[currentCostume]
         let spriteImageView: UIImageView = UIImageView()
         
         spriteImageView.image = spriteImage
@@ -75,7 +128,6 @@ class Sprite {
             spriteImageView.transform = CGAffineTransformMakeRotation((rotation-90) * CGFloat(M_PI / 180))
         }
         spriteImageView.userInteractionEnabled = true
-        
         return spriteImageView
     }
     
@@ -93,27 +145,75 @@ class Sprite {
         return spriteIconImageView
     }
     
-    func createTalking() -> UIImageView {
+    func createTalking() -> UIView {
+        let talkingView: UIView = UIView()
         let talkingImage: UIImage = UIImage(named: "box_say")!
         let talkingImageView: UIImageView = UIImageView()
+        let talkingLabel: UILabel = UILabel()
+        
+        talkingView.frame.size.height = talkingImage.size.height
+        talkingView.frame.size.width = talkingImage.size.width
+        talkingView.center.x = spriteImageView.center.x + spriteImageView.image!.size.width
+        talkingView.center.y = spriteImageView.center.y - spriteImageView.image!.size.height/1.3
+        talkingView.hidden = true
         
         talkingImageView.image = talkingImage
         talkingImageView.frame.size.height = talkingImage.size.height
         talkingImageView.frame.size.width = talkingImage.size.width
-        talkingImageView.center.x = spriteImageView.center.x + spriteImageView.image!.size.width
-        talkingImageView.center.y = spriteImageView.center.y - spriteImageView.image!.size.height/1.3
-        talkingImageView.hidden = true
+        talkingImageView.frame.origin.x = 0
+        talkingImageView.frame.origin.y = 0
+        talkingView.addSubview(talkingImageView)
         
-        return talkingImageView
+        talkingLabel.frame.size.height = talkingImage.size.height
+        talkingLabel.frame.size.width = talkingImage.size.width
+        talkingLabel.frame.origin.x = 0
+        talkingLabel.frame.origin.y = -13
+        talkingView.addSubview(talkingLabel)
+        
+        self.talkingImageView = talkingImageView
+        self.talkingLabel = talkingLabel
+        
+        return talkingView
     }
     
     func save() -> String {
-        var content: String = "<sprite spriteType='" + spriteType + "' x='" + String(x) + "' y='" + String(y) + "' rotation='" + String(rotation) + "' rotationStyle='" + String(rotationStyle) + "' height='" + String(height) + "' width='" + String(width) + "'>"
+        var content: String = "<sprite spriteType='" + spriteType
+        content += "' x='" + String(x)
+        content += "' y='" + String(y)
+        content += "' rotation='" + String(rotation)
+        content += "' rotationStyle='" + String(rotationStyle)
+        content += "' height='" + String(height)
+        content += "' width='" + String(width)
+        content += "' costume='" + String(currentCostume) + "'>"
         
         var array: String = "false"
         for var outer = 0; outer < blocks.count; outer++ {
             for var inner = 0; inner < blocks[outer].count; inner++ {
-                content += "<block array='" + array + "' type='" + blocks[outer][inner].type + "' id='" + String(blocks[outer][inner].id) + "' shape='" + blocks[outer][inner].shape + "' value='" + String(blocks[outer][inner].value) + "' value2='" + String(blocks[outer][inner].value2) + "' x='" + String(blocks[outer][inner].x) + "' y='" + String(blocks[outer][inner].y) + "'></block>"
+                content += "<block array='" + array
+                content += "' type='" + blocks[outer][inner].type
+                content += "' id='" + String(blocks[outer][inner].id)
+                content += "' shape='" + blocks[outer][inner].shape
+                if blocks[outer][inner].blockView.textFieldValue != nil{
+                    content += "' value='" + blocks[outer][inner].blockView.textFieldValue!
+                }
+                else {
+                    content += "' value1='nil"
+                }
+                if blocks[outer][inner].blockView.textFieldValue2 != nil{
+                    content += "' value2='" + blocks[outer][inner].blockView.textFieldValue2!
+                }
+                else {
+                    content += "' value2='nil"
+                }
+                if blocks[outer][inner].blockView.textFieldValue3 != nil{
+                    content += "' value3='" + blocks[outer][inner].blockView.textFieldValue3!
+                }
+                else {
+                    content += "' value3='nil"
+                }
+                
+                content += "' x='" + String(blocks[outer][inner].x)
+                content += "' y='" + String(blocks[outer][inner].y) + "'></block>"
                 array = "false"
             }
             array = "true"

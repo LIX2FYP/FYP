@@ -91,7 +91,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
     var spriteNameArray: Array<String> = ["redbird", "turtle", "rabbit", "crow_standing", "pig_mum", "pig_first", "pig_second", "pig_third", "wolf", "boy", "sheep", "prince", "princess", "devil", "devil_blue"]
     var spriteLibraryArray: Array<UIImage> = []
     //Add Background
-    var backgroundNameArray: Array<String> = ["bg_1basics", "bg_2sequencing"]
+    var backgroundNameArray: Array<String> = ["bg_1basics", "bg_2sequencing", "bg_3.1sequencing", "bg_3.4sequencing", "bg_4.1conditionals", "bg_4.2conditionals", "bg_4.3conditionals", "bg_4.4conditionals", "bg_5function", "bg_6EmptyBackground", "bg_bgWithLevels"]
     var backgroundLibraryArray: Array<UIImage> = []
     //selection block
     var selectionBlocks: Array<Block> = []
@@ -136,6 +136,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
         CodingAreaScroll.contentSize.height = 1000
         
         AddSpriteScroll.contentSize.height = 1050
+        AddBackgroundScroll.contentSize.height = 880
         var x: CGFloat  = 150
         var y: CGFloat = 120
         
@@ -184,14 +185,39 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
         
         x = 20
         y = 20
-        for index in 0 ... 27{
+        for index in 0 ... 37{
             var panBlock = UIPanGestureRecognizer(target: self, action: "moveBlock:")
+            
+            var textFieldValue: String = "nil"
+            var textFieldValue2: String = "nil"
+            var textFieldValue3: String = "nil"
             //motion
-            if index < 13{
-                selectionBlocks.append(Block(type: "motion", id: index, shape: "cmd", value: "5", value2: "5", x: x, y: y))
+            if index < 12{
+                if index == 0 || index == 6 || index == 8{
+                    textFieldValue = "10"
+                }
+                else if index == 1 || index == 2{
+                    textFieldValue = "15"
+                }
+                else if index == 3{
+                    textFieldValue = "90"
+                }
+                else if index == 4{
+                    textFieldValue = "0"
+                    textFieldValue2 = "0"
+                }
+                else if index == 5{
+                    textFieldValue = "1"
+                    textFieldValue2 = "0"
+                    textFieldValue3 = "0"
+                }
+                else if index == 7 || index == 9{
+                    textFieldValue = "0"
+                }
+                selectionBlocks.append(Block(type: "motion", id: index, shape: "cmd", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
             }
             else if index < 15{
-                selectionBlocks.append(Block(type: "motion", id: index, shape: "number", value: "5", value2: "5", x: x, y: y))
+                selectionBlocks.append(Block(type: "motion", id: index, shape: "number", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
             }
                 //events
             else if index < 17{
@@ -199,19 +225,78 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                     x = 20
                     y = 20
                 }
-                selectionBlocks.append(Block(type: "events", id: index - 15, shape: "hat", value: "5", value2: "5", x: x, y: y))
+                selectionBlocks.append(Block(type: "events", id: index - 15, shape: "hat", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
                 
             }
             else if index < 20{
-                selectionBlocks.append(Block(type: "events", id: index - 15, shape: "cmd", value: "5", value2: "5", x: x, y: y))
+                selectionBlocks.append(Block(type: "events", id: index - 15, shape: "cmd", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
             }
                 //looks
-            else if index < 28{
+            else if index < 30{
                 if index == 20{
                     x = 20
                     y = 20
                 }
-                selectionBlocks.append(Block(type: "looks", id: index - 20, shape: "cmd", value: "5", value2: "5", x: x, y: y))
+                if index - 20 == 0{
+                    textFieldValue = "Hello!"
+                    textFieldValue2 = "2"
+                }
+                else if index - 20 == 1{
+                    textFieldValue = "Hello!"
+                }
+                else if index - 20 == 2{
+                    textFieldValue = "Hmm..."
+                    textFieldValue2 = "2"
+                }
+                else if index - 20 == 3{
+                    textFieldValue = "Hmm..."
+                }
+                else if index - 20 == 8{
+                    textFieldValue = "10"
+                }
+                else if index - 20 == 9{
+                    textFieldValue = "100"
+                }
+                selectionBlocks.append(Block(type: "looks", id: index - 20, shape: "cmd", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
+            }
+                //control
+            else if index < 31{
+                if index == 30{
+                    x = 20
+                    y = 20
+                }
+                if index - 30 == 0{
+                    textFieldValue = "1"
+                }
+                selectionBlocks.append(Block(type: "control", id: index - 30, shape: "cmd", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
+            }
+            else if index < 32{
+                if index - 30 == 1{
+                    textFieldValue = "10"
+                }
+                selectionBlocks.append(Block(type: "control", id: index - 30, shape: "loopShape", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
+                
+            }
+            else if index < 33{
+                selectionBlocks.append(Block(type: "control", id: index - 30, shape: "loop", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
+            }
+            else if index < 34{
+                selectionBlocks.append(Block(type: "control", id: index - 30, shape: "loopShape", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
+            }
+            else if index < 35{
+                selectionBlocks.append(Block(type: "control", id: index - 30, shape: "ifelse", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
+                
+            }
+            else if index < 36{
+                selectionBlocks.append(Block(type: "control", id: index - 30, shape: "cmd", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
+                
+            }
+            else if index < 37{
+                selectionBlocks.append(Block(type: "control", id: index - 30, shape: "loopShape", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
+                
+            }
+            else if index < 38{
+                selectionBlocks.append(Block(type: "control", id: index - 30, shape: "finalCmdShape", x: x, y: y, textFieldValue: textFieldValue, textFieldValue2: textFieldValue2, textFieldValue3: textFieldValue3))
             }
             selectionBlocks[index].blockView.addGestureRecognizer(panBlock)
             if index < 15{
@@ -268,7 +353,8 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
         
         for sprite in sprites{
             StageView.addSubview(sprite.spriteImageView)
-            StageView.addSubview(sprite.talkingImageView)
+            StageView.addSubview(UIView(frame: CGRectMake(sprite.spriteImageView.center.x, sprite.spriteImageView.center.y, 10, 10)))
+            StageView.addSubview(sprite.talkingView)
             
             //block
             for spriteBlockArray in sprite.blocks{
@@ -363,8 +449,8 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                     relativeLocation.x = location.x - relativePoint.x
                     relativeLocation.y = location.y - relativePoint.y
                     sprites[selectedSpriteIndex].spriteImageView.center = relativeLocation
-                    sprites[selectedSpriteIndex].talkingImageView.center.x = sprites[selectedSpriteIndex].spriteImageView.center.x + sprites[selectedSpriteIndex].spriteImageView.image!.size.width
-                    sprites[selectedSpriteIndex].talkingImageView.center.y = sprites[selectedSpriteIndex].spriteImageView.center.y - sprites[selectedSpriteIndex].spriteImageView.image!.size.height/1.3
+                    sprites[selectedSpriteIndex].talkingView.center.x = sprites[selectedSpriteIndex].spriteImageView.center.x + sprites[selectedSpriteIndex].spriteImageView.image!.size.width
+                    sprites[selectedSpriteIndex].talkingView.center.y = sprites[selectedSpriteIndex].spriteImageView.center.y - sprites[selectedSpriteIndex].spriteImageView.image!.size.height/1.3
                 }
             }
             else if touchArea == SpriteSelectingAreaView{
@@ -386,10 +472,10 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
             
             if touchArea == StageView{
                 if selectedSpriteIndex < sprites.endIndex{
-                    if !StageView.frame.contains(location){
+                    if !StageView.bounds.contains(location){
                         sprites[selectedSpriteIndex].spriteImageView.center = beganLocation
-                        sprites[selectedSpriteIndex].talkingImageView.center.x = sprites[selectedSpriteIndex].spriteImageView.center.x + sprites[selectedSpriteIndex].spriteImageView.image!.size.width
-                        sprites[selectedSpriteIndex].talkingImageView.center.y = sprites[selectedSpriteIndex].spriteImageView.center.y - sprites[selectedSpriteIndex].spriteImageView.image!.size.height/1.3
+                        sprites[selectedSpriteIndex].talkingView.center.x = sprites[selectedSpriteIndex].spriteImageView.center.x + sprites[selectedSpriteIndex].spriteImageView.image!.size.width
+                        sprites[selectedSpriteIndex].talkingView.center.y = sprites[selectedSpriteIndex].spriteImageView.center.y - sprites[selectedSpriteIndex].spriteImageView.image!.size.height/1.3
                     }
                     else {
                         sprites[selectedSpriteIndex].x = sprites[selectedSpriteIndex].spriteImageView.center.x
@@ -526,7 +612,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
             
             content += width
             
-            content += "'></sprite></sprites>"
+            content += "' costume='0'></sprite></sprites>"
             
             if background != ""{
                 content += "</background>"
@@ -618,9 +704,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                 for spriteBlockArray in sprite.blocks{
                     if !spriteBlockArray.isEmpty{
                         if spriteBlockArray[0].type == "events" && spriteBlockArray[0].id == 0{
-                            for spriteBlock in spriteBlockArray{
-                                spriteBlock.runBlock(sprite)
-                            }
+                            runSpriteArray(spriteBlockArray, sprite: sprite)
                         }
                         else{
                             continue
@@ -628,7 +712,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                     }
                 }
             }
-            
+            /*
             for sprite in sprites{
                 if sprite.talkingImageView.hidden == false{
                     break
@@ -639,6 +723,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                     FlagBtn.setImage(flagBtnImage, forState: UIControlState.Normal)
                 }
             }
+*/
         }
         else {
             running = false
@@ -674,7 +759,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
     }
     
     @IBAction func showLooksBlock(sender: AnyObject) {
-        CodingBlockSelectionScroll.contentSize.height = 190
+        CodingBlockSelectionScroll.contentSize.height = 230
         for selectionBlock in selectionBlocks{
             if selectionBlock.type == "looks"{
                 selectionBlock.blockView.hidden = false
@@ -754,8 +839,9 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
             let rotationStyle = Int(attributeDict["rotationStyle"]! as String)
             let height = CGFloat(Float(attributeDict["height"]! as String)!)
             let width = CGFloat(Float(attributeDict["width"]! as String)!)
+            let costume = Int(attributeDict["costume"]! as String)
             
-            parseringSprite = Sprite(spriteType: spriteType, x: x, y: y, rotation: rotation, rotationStyle: rotationStyle!, height: height, width: width, blocks: parseringArray)
+            parseringSprite = Sprite(spriteType: spriteType, x: x, y: y, rotation: rotation, rotationStyle: rotationStyle!, height: height, width: width, blocks: parseringArray, costume: costume!)
         }
             
         else if elementName == "block" {
@@ -765,6 +851,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
             let id = Int(attributeDict["id"]! as String)
             let value = attributeDict["value"]! as String
             let value2 = attributeDict["value2"]! as String
+            let value3 = attributeDict["value3"]! as String
             let x = CGFloat(Float(attributeDict["x"]! as String)!)
             let y = CGFloat(Float(attributeDict["y"]! as String)!)
             
@@ -772,7 +859,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                 parseringArray.append(parseringBlocks)
                 parseringBlocks = []
             }
-            parseringBlocks.append(Block(type: type, id: id!, shape: shape, value: value, value2: value2, x: x, y: y))
+            parseringBlocks.append(Block(type: type, id: id!, shape: shape, x: x, y: y, textFieldValue: value, textFieldValue2: value2, textFieldValue3: value3))
         }
     }
     
@@ -830,6 +917,12 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                 CodingBlockSelectionScroll.clipsToBounds = false
                 for selectionBlock in selectionBlocks{
                     if selectedView.isEqual(selectionBlock.blockView){
+                        if selectedView.isKindOfClass(BlockShape){
+                            print("yes")
+                        }
+                        else {
+                            print(selectedView)
+                        }
                         break
                     }
                     selectedBlockIndex++
@@ -988,10 +1081,10 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                             var existBlock = sprites[selectedSpriteIndex].blocks[nearByArrayIndex][nearByBlockIndex]
                             
                             if positionOfNearBy == "above"{
-                                newBlock = Block(type: selectionBlocks[selectedBlockIndex].type, id: selectionBlocks[selectedBlockIndex].id, shape: selectionBlocks[selectedBlockIndex].shape, value: selectionBlocks[selectedBlockIndex].value, value2: selectionBlocks[selectedBlockIndex].value2, x: existBlock.blockView.center.x - selectionBlocks[selectedBlockIndex].blockView.frame.size.width/2, y: existBlock.blockView.center.y - (selectionBlocks[selectedBlockIndex].blockView.frame.size.height*3/2))
+                                newBlock = Block(type: selectionBlocks[selectedBlockIndex].type, id: selectionBlocks[selectedBlockIndex].id, shape: selectionBlocks[selectedBlockIndex].shape, x: existBlock.blockView.center.x - selectionBlocks[selectedBlockIndex].blockView.frame.size.width/2, y: existBlock.blockView.center.y - (selectionBlocks[selectedBlockIndex].blockView.frame.size.height*3/2), textFieldValue: selectionBlocks[selectedBlockIndex].textFieldValue, textFieldValue2: selectionBlocks[selectedBlockIndex].textFieldValue2, textFieldValue3: selectionBlocks[selectedBlockIndex].textFieldValue3)
                             }
                             else {
-                                newBlock = Block(type: selectionBlocks[selectedBlockIndex].type, id: selectionBlocks[selectedBlockIndex].id, shape: selectionBlocks[selectedBlockIndex].shape, value: selectionBlocks[selectedBlockIndex].value, value2: selectionBlocks[selectedBlockIndex].value2, x: existBlock.blockView.center.x - selectionBlocks[selectedBlockIndex].blockView.frame.size.width/2, y: existBlock.blockView.center.y +  selectionBlocks[selectedBlockIndex].blockView.frame.size.height/2)
+                                newBlock = Block(type: selectionBlocks[selectedBlockIndex].type, id: selectionBlocks[selectedBlockIndex].id, shape: selectionBlocks[selectedBlockIndex].shape, x: existBlock.blockView.center.x - selectionBlocks[selectedBlockIndex].blockView.frame.size.width/2, y: existBlock.blockView.center.y +  selectionBlocks[selectedBlockIndex].blockView.frame.size.height/2, textFieldValue: selectionBlocks[selectedBlockIndex].textFieldValue, textFieldValue2: selectionBlocks[selectedBlockIndex].textFieldValue2, textFieldValue3: selectionBlocks[selectedBlockIndex].textFieldValue3)
                             }
                             newBlock.blockView.addGestureRecognizer(panBlock)
                             
@@ -1019,7 +1112,7 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
                             relativeLocation.y = sender.locationInView(CodingAreaScroll).y - relativePoint.y - selectionBlocks[selectedBlockIndex].blockView.frame.size.height/2
                             
                             var panBlock = UIPanGestureRecognizer(target: self, action: "moveBlock:")
-                            var newBlock = Block(type: selectionBlocks[selectedBlockIndex].type, id: selectionBlocks[selectedBlockIndex].id, shape: selectionBlocks[selectedBlockIndex].shape, value: selectionBlocks[selectedBlockIndex].value, value2: selectionBlocks[selectedBlockIndex].value2, x: relativeLocation.x, y: relativeLocation.y)
+                            var newBlock = Block(type: selectionBlocks[selectedBlockIndex].type, id: selectionBlocks[selectedBlockIndex].id, shape: selectionBlocks[selectedBlockIndex].shape, x: relativeLocation.x, y: relativeLocation.y, textFieldValue: selectionBlocks[selectedBlockIndex].textFieldValue, textFieldValue2: selectionBlocks[selectedBlockIndex].textFieldValue2, textFieldValue3: selectionBlocks[selectedBlockIndex].textFieldValue3)
                             
                             newBlock.blockView.addGestureRecognizer(panBlock)
                             var nearbyBlockArray: Array<Block> = []
@@ -1193,6 +1286,15 @@ class ScratchVC: UIViewController, NSXMLParserDelegate {
             backgroundNameIndex++
         }
         selectedImage = backgroundNameArray[backgroundNameIndex]
+    }
+    
+    func runSpriteArray(spriteBlockArray: Array<Block>, sprite: Sprite){
+        let oneDArrayQueue = dispatch_queue_create("spriteBlockQueue", nil)
+        dispatch_async(oneDArrayQueue) {
+            for spriteBlock in spriteBlockArray{
+                spriteBlock.runBlock(sprite)
+            }
+        }
     }
 
 }

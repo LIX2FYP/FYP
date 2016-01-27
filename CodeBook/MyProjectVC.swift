@@ -111,7 +111,7 @@ class MyProjectVC: UIViewController {
         print(docsPath)
         filePath = docsPath.stringByAppendingPathComponent(projectName+type)
         
-        let content = "<sprites><sprite spriteType='redbird' x='250' y='100' rotation='90' rotationStyle='2' height='108' width='101'></sprite></sprites>"
+        let content = "<sprites><sprite spriteType='redbird' x='250' y='100' rotation='90' rotationStyle='2' height='108' width='101' costume='0'></sprite></sprites>"
         do{
             try content.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
         }
